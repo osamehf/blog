@@ -14,6 +14,7 @@ class CommentService implements CommentInterface
     public $model;
 
     public $postService;
+    public $response;
 
     public function __construct(
         Comment $comment,

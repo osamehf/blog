@@ -10,10 +10,11 @@ class PostService implements PostInterface
 {
     // store model instance
     public $model;
+    public $response;
 
     public function __construct(Post $post)
     {
-        $this->model = $post;    
+        $this->model = $post;
     }
 
     /**
