@@ -26,3 +26,9 @@ $ php artisan serve --port=8088
 ```
 
 to see the website please open the `http://localhost:8088/`
+
+## Run tests
+to run tests please run following command:
+```shell
+$ ./vendor/bin/phpunit
+```
