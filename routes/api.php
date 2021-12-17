@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('posts')->group(function() {
+    Route::GET('', [PostController::class, 'getPosts']);
+
+    Route::POST('', [PostController::class, 'postPost']);
+
+    Route::prefix('{post}')->group(function() {
+        Route::GET('', [PostController::class, 'getPost']);
+
+        Route::PATCH('', [PostController::class, 'patchPost']);
+
+        Route::DELETE('', [PostController::class, 'deletePost']);
+
+        Route::prefix('comments')->group(function() {
+            Route::GET('', [PostController::class, 'getPostComments']);
+
+            Route::POST('', [PostController::class, 'postPostComment']);
+
+            Route::DELETE('{comment}', [PostController::class, 'deletePostComment']);
+        });
+    });
 });
