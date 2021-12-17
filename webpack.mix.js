@@ -11,7 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js').vue()
     .postCss('resources/css/app.css', 'public/css', [
         //
-    ]);
+    ])
+    .copy('resources/vendors/bootstrap/css/bootstrap.min.css', 'public/css/bootstrap.css') // Bootstrap framework css
+;
